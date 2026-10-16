@@ -100,21 +100,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 }
 
 
-/* Subtle pulse for live/archive indicators */
-.status, .live-dot {
-  animation: rho-status-fade 2.4s ease-in-out infinite;
-}
-.status i {
-  animation: rho-dot-fade 2.4s ease-in-out infinite;
-}
-@keyframes rho-status-fade {
+/* Gentle status pulse for the online and public-archive indicators. */
+@keyframes status-pulse {
   0%, 100% { opacity: 1; }
-  50% { opacity: .35; }
+  50% { opacity: .42; }
 }
-@keyframes rho-dot-fade {
-  0%, 100% { opacity: 1; box-shadow: 0 0 7px #C8A24D66; }
-  50% { opacity: .25; box-shadow: 0 0 0 transparent; }
+.status, .status i, .live-dot {
+  animation: status-pulse 2.2s ease-in-out infinite;
 }
+.status i { animation-delay: .08s; }
 @media (prefers-reduced-motion: reduce) {
-  .status, .status i, .live-dot { animation: none !important; }
+  .status, .status i, .live-dot { animation: none !important; opacity: 1; }
 }
